@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>blogio</title>
-  </head>
-  <body>
-<h1>WHOAAAAA</h1>
-<em>this is the blog of the century, oh yeah</em>
-  </body>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+{% for post in posts %}
+  <div class="post">
+    <h3>{{ post.author }} posted <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+    <p class="date">published: {{ post.published_date }}</p>
+    <p>{{ post.text|linebreaksbr }}</p>
+  </div>
+{% endfor %}
+{% endblock %}
